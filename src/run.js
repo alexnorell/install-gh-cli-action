@@ -7,10 +7,13 @@ async function run() {
     let version = core.getInput('cli-release');
     let platform = core.getInput('platform');
     let arch = core.getInput('arch');
+    console.log(`defined version: ${version}`);
     if (version === 'latest') {
       version = await getLatestReleaseTag('cli', 'cli');
+      console.log(`latest version: ${version}`);
     }
     if (version) {
+      console.log(`downloaded version: ${version}`);
       await getGhCli(version, platform, arch);
     }
   } catch (error) {
