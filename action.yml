@@ -18,5 +18,5 @@ runs:
   using: 'node16'
   main: 'dist/index.js'
 branding:
-  icon: 'down-arrow'
+  icon: 'arrow-down'
   color: 'purple'
