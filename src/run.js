@@ -50,9 +50,9 @@ async function getLatestReleaseTag(owner, repo) {
 }
 
 async function downloadGhCli(version, platform, arch) {
-  const toolDirectoryName = `gh_${version}_${platform}_${arch}`;
   const strippedVersion = version.replace(/^v/, '');
-  const downloadUrl = `https://github.com/cli/cli/releases/download/${version}/gh_${strippedVersion}_${platform}_${arch}.tar.gz`;
+  const toolDirectoryName = `gh_${strippedVersion}_${platform}_${arch}`;
+  const downloadUrl = `https://github.com/cli/cli/releases/download/${version}/${toolDirectoryName}.tar.gz`;
   console.log(`downloading: ${downloadUrl}`);
 
   try {
@@ -61,7 +61,7 @@ async function downloadGhCli(version, platform, arch) {
     const extractedPath = await tc.extractTar(downloadPath);
     console.log(`extracted: ${extractedPath}`);
     let toolRoot = path.join(extractedPath, toolDirectoryName);
-    return await tc.cacheDir(toolRoot, 'gh-cli', version, platform, arch);
+    return await tc.cacheDir(toolRoot, 'gh-cli', strippedVersion, platform, arch);
   } catch (err) {
     throw err;
   }
