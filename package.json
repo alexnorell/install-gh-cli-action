@@ -1,6 +1,6 @@
 {
   "name": "install-gh-cli-action",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Download, cache and install the GH CLI to the workspace (GitHub Action)",
   "main": "run.js",
   "scripts": {
@@ -9,17 +9,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dev-hanz-ops/install-gh-cli-action.git"
+    "url": "git+https://github.com/alexnorell/install-gh-cli-action.git"
   },
   "keywords": [
     "github",
     "actions"
   ],
-  "author": "dev-hanz-ops",
+  "author": "dev-hanz-ops,alexnorell",
   "bugs": {
-    "url": "https://github.com/dev-hanz-ops/install-gh-cli-action/issues"
+    "url": "https://github.com/alexnorell/install-gh-cli-action/issues"
   },
-  "homepage": "https://github.com/dev-hanz-ops/install-gh-cli-action#readme",
+  "homepage": "https://github.com/alexnorell/install-gh-cli-action#readme",
   "dependencies": {
     "@actions/core": "^1.9.0",
     "@actions/tool-cache": "^2.0.1"

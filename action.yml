@@ -1,5 +1,5 @@
 name: 'Self-hosted GH CLI'
-description: 'Download, cache and install the GH CLI to the workspace'
+description: 'Download, cache and install the GitHub CLI to the workspace'
 author: 'alexnorell'
 inputs:
   cli-release:
