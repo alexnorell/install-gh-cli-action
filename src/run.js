@@ -7,6 +7,9 @@ async function run() {
     let version = core.getInput('cli-release');
     let platform = core.getInput('platform');
     let arch = core.getInput('arch');
+    if (version == 'latest') {
+      version = await getLatestReleaseTag('cli', 'cli');
+    }
     if (version) {
       await getGhCli(version, platform, arch);
     }
@@ -26,9 +29,31 @@ async function getGhCli(version, platform, arch) {
   core.addPath(toolPath);
 }
 
+async function getLatestReleaseTag(owner, repo) {
+    const url = `https://api.github.com/repos/${owner}/${repo}/releases/latest`;
+
+    try {
+        const response = await fetch(url, {
+            headers: {
+                'Accept': 'application/vnd.github.v3+json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`GitHub API returned ${response.status}: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        return data.tag_name;
+    } catch (error) {
+        console.error("Failed to fetch the latest release tag:", error);
+        return null;
+    }
+}
+
 async function downloadGhCli(version, platform, arch) {
   const toolDirectoryName = `gh_${version}_${platform}_${arch}`;
-  const downloadUrl = `https://github.com/cli/cli/releases/download/v${version}/gh_${version}_${platform}_${arch}.tar.gz`;
+  const downloadUrl = `https://github.com/cli/cli/releases/download/${version}/gh_${version}_${platform}_${arch}.tar.gz`;
   console.log(`downloading ${downloadUrl}`);
 
   try {

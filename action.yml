@@ -5,13 +5,13 @@ inputs:
   cli-release:
     description: 'Version of the GitHub-CLI that should be installed'
     required: false
-    default: '2.24.3'
+    default: 'latest'
   arch:
     description: 'Architecture to download and install'
     required: false
     default: 'amd64'
   platform:
-    description: 'Platform to download and install'  
+    description: 'Platform to download and install'
     required: false
     default: 'linux'
 runs:
