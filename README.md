@@ -1,22 +1,33 @@
 # Install GH CLI action
 
-Selfhosted runners do not come with the GH CLI out of the box. This action is an easy-to-use way to install it.
+Selfhosted runners do not come with the GH CLI out of the box. This action is an easy-to-use way to install it. Also support automatically installing the latest release.
 
-## Usage
+## Specific Release
 
 ```yaml
 - name: Install GH CLI
   uses: alexnorell/install-gh-cli-action
   with:
-    cli-release: 2.24.3
-    platform: linux
-    arch: amd64
+    cli-release: v2.24.3
+    gh-platform: linux
+    gh-arch: amd64
+```
+
+## Latest Release
+
+```yaml
+- name: Install GH CLI
+  uses: alexnorell/install-gh-cli-action
+  with:
+    cli-release: latest
+    gh-platform: linux
+    gh-arch: amd64
 ```
 
 ## Variables
 
 | Variable | Description | Default |
 | --- | --------- | --- |
-| `cli-release` | Version of the GH CLI to install | `2.24.3` |
+| `cli-release` | Version of the GH CLI to install | `latest` |
 | `platform` | Platform to use for the binary | `linux` |
 | `arch` | CPU Architecture for the binary | `amd64` |
