@@ -7,7 +7,7 @@ async function run() {
     let version = core.getInput('cli-release');
     let platform = core.getInput('platform');
     let arch = core.getInput('arch');
-    if (version == 'latest') {
+    if (version === 'latest') {
       version = await getLatestReleaseTag('cli', 'cli');
     }
     if (version) {
