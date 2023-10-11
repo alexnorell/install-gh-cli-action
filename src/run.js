@@ -57,9 +57,7 @@ async function downloadGhCli(version, platform, arch) {
 
   try {
     const downloadPath = await tc.downloadTool(downloadUrl);
-    console.log(`extracting: ${downloadPath}`);
     const extractedPath = await tc.extractTar(downloadPath);
-    console.log(`extracted: ${extractedPath}`);
     let toolRoot = path.join(extractedPath, toolDirectoryName);
     return await tc.cacheDir(toolRoot, 'gh-cli', strippedVersion, platform, arch);
   } catch (err) {

@@ -36403,9 +36403,7 @@ async function downloadGhCli(version, platform, arch) {
 
   try {
     const downloadPath = await _actions_tool_cache__WEBPACK_IMPORTED_MODULE_1__.downloadTool(downloadUrl);
-    console.log(`extracting: ${downloadPath}`);
     const extractedPath = await _actions_tool_cache__WEBPACK_IMPORTED_MODULE_1__.extractTar(downloadPath);
-    console.log(`extracted: ${extractedPath}`);
     let toolRoot = path__WEBPACK_IMPORTED_MODULE_2__.join(extractedPath, toolDirectoryName);
     return await _actions_tool_cache__WEBPACK_IMPORTED_MODULE_1__.cacheDir(toolRoot, 'gh-cli', strippedVersion, platform, arch);
   } catch (err) {
