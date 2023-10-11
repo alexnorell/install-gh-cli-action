@@ -36,17 +36,17 @@ async function getLatestReleaseTag(owner, repo) {
     const url = `https://api.github.com/repos/${owner}/${repo}/releases/latest`;
 
     try {
-        const response = await fetch(url, {
-            headers: {
-                'Accept': 'application/vnd.github.v3+json'
-            }
+        const axios = require('axios');
+        axios.get(url, {
+          headers: {
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        }).then(response => {
+          const data = response.data;
+
+        }).catch(error => {
+            console.error("Failed to fetch:", error);
         });
-
-        if (!response.ok) {
-            throw new Error(`GitHub API returned ${response.status}: ${response.statusText}`);
-        }
-
-        const data = await response.json();
         return data.tag_name;
     } catch (error) {
         console.error("Failed to fetch the latest release tag:", error);
