@@ -32,22 +32,19 @@ async function getGhCli(version, platform, arch) {
   core.addPath(toolPath);
 }
 
+const axios = require('axios');
+
 async function getLatestReleaseTag(owner, repo) {
     const url = `https://api.github.com/repos/${owner}/${repo}/releases/latest`;
 
     try {
-        const axios = require('axios');
-        axios.get(url, {
-          headers: {
-            'Accept': 'application/vnd.github.v3+json'
-          }
-        }).then(response => {
-          const data = response.data;
-          return data.tag_name;
-        }).catch(error => {
-            console.error("Failed to fetch:", error);
+        const response = await axios.get(url, {
+            headers: {
+                'Accept': 'application/vnd.github.v3+json'
+            }
         });
 
+        return response.data.tag_name;
     } catch (error) {
         console.error("Failed to fetch the latest release tag:", error);
         return null;
@@ -56,7 +53,8 @@ async function getLatestReleaseTag(owner, repo) {
 
 async function downloadGhCli(version, platform, arch) {
   const toolDirectoryName = `gh_${version}_${platform}_${arch}`;
-  const downloadUrl = `https://github.com/cli/cli/releases/download/${version}/gh_${version}_${platform}_${arch}.tar.gz`;
+  const strippedVersion = version.replace(/^v/, '');
+  const downloadUrl = `https://github.com/cli/cli/releases/download/${version}/gh_${strippedVersion}_${platform}_${arch}.tar.gz`;
   console.log(`downloading ${downloadUrl}`);
 
   try {
