@@ -43,11 +43,11 @@ async function getLatestReleaseTag(owner, repo) {
           }
         }).then(response => {
           const data = response.data;
-
+          return data.tag_name;
         }).catch(error => {
             console.error("Failed to fetch:", error);
         });
-        return data.tag_name;
+
     } catch (error) {
         console.error("Failed to fetch the latest release tag:", error);
         return null;
