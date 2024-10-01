@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install GH CLI
-        uses: alexnorell/install-gh-cli-action@main
+        uses: ./
       - name: git describe
         id: ghd
         uses: proudust/gh-describe@v2.0.0
@@ -32,7 +32,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install GH CLI
-        uses: alexnorell/install-gh-cli-action@main
+        uses: ./
         with:
           cli-release: latest
       - name: git describe
@@ -48,7 +48,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install GH CLI
-        uses: alexnorell/install-gh-cli-action@main
+        uses: ./
         with:
           cli-release: v2.57.0
       - name: git describe
