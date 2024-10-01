@@ -16,12 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install GH CLI
         uses: alexnorell/install-gh-cli-action@main
       - name: git describe
         id: ghd
-        uses: proudust/gh-describe@v1
+        uses: proudust/gh-describe@v2.0.0
   test-latest:
     name: Test Action Latest (Linux)
     permissions:
@@ -30,14 +30,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install GH CLI
         uses: alexnorell/install-gh-cli-action@main
         with:
           cli-release: latest
       - name: git describe
         id: ghd
-        uses: proudust/gh-describe@v1
+        uses: proudust/gh-describe@v2.0.0
   test-specific:
     name: Test Action Specific Version (Linux)
     permissions:
@@ -46,11 +46,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install GH CLI
         uses: alexnorell/install-gh-cli-action@main
         with:
-          cli-release: v2.36.0
+          cli-release: v2.57.0
       - name: git describe
         id: ghd
-        uses: proudust/gh-describe@v1
+        uses: proudust/gh-describe@v2.0.0
